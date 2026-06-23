@@ -1,10 +1,11 @@
 import axios from "axios";
 
 const client = axios.create({
-    baseURL: "http://localhost:8000/api"
+    baseURL: import.meta.env.VITE_API_URL
 });
 
 client.interceptors.request.use((config) => {
+
     const token = localStorage.getItem("token");
 
     if (token) {
@@ -12,6 +13,7 @@ client.interceptors.request.use((config) => {
     }
 
     return config;
+
 });
 
 export default client;
