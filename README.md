@@ -1,32 +1,64 @@
-# React + TypeScript + Vite
+# Inventory Frontend
 
-This template provides a minimal setup to get React working in Vite with HMR and some Oxlint rules.
+React + TypeScript + Vite frontend for the inventory management system.
 
-Currently, two official plugins are available:
+## Stack
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+- React
+- TypeScript
+- Vite
+- Axios
+- React Router
 
-## React Compiler
+## Requirements
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+- Node.js 20+
+- npm
 
-## Expanding the Oxlint configuration
+## Environment
 
-If you are developing a production application, we recommend enabling type-aware lint rules by installing `oxlint-tsgolint` and editing `.oxlintrc.json`:
+Create a `.env` file in `inventory_frontend/` with:
 
-```json
-{
-  "$schema": "./node_modules/oxlint/configuration_schema.json",
-  "plugins": ["react", "typescript", "oxc"],
-  "options": {
-    "typeAware": true
-  },
-  "rules": {
-    "react/rules-of-hooks": "error",
-    "react/only-export-components": ["warn", { "allowConstantExport": true }]
-  }
-}
+```env
+VITE_API_URL=https://inventorybackend-production-5227.up.railway.app/api
 ```
 
-See the [Oxlint rules documentation](https://oxc.rs/docs/guide/usage/linter/rules) for the full list of rules and categories.
+For local development, you can point `VITE_API_URL` at your local backend instead.
+
+## Install
+
+```bash
+npm install
+```
+
+## Run locally
+
+```bash
+npm run dev
+```
+
+The app runs at the Vite dev server URL shown in the terminal, usually `http://localhost:5173`.
+
+## Build
+
+```bash
+npm run build
+```
+
+## Preview Production Build
+
+```bash
+npm run preview
+```
+
+## Scripts
+
+- `npm run dev` starts the Vite dev server
+- `npm run build` type-checks and builds the app
+- `npm run lint` runs Oxlint
+- `npm run preview` previews the production build
+
+## Deployment Notes
+
+- Set `VITE_API_URL` in Vercel to the Railway backend `/api` URL.
+- The API client trims trailing slashes and normalizes the base path, so both local and deployed values work cleanly.
